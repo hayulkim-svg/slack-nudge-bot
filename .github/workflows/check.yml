@@ -1,0 +1,42 @@
+name: nudge-check
+
+# Runs the nudge check in the cloud on a schedule (and on demand), so reminders
+# fire without your computer being on. State (tracked.json) is committed back to
+# the repo so the next run remembers who has already been nudged.
+
+on:
+  schedule:
+    - cron: '*/30 * * * *' # every 30 minutes (GitHub may delay by a few minutes)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: nudge-state
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci
+      - name: Run check
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        run: node src/check.js
+      - name: Commit updated state
+        run: |
+          if [ -n "$(git status --porcelain tracked.json)" ]; then
+            git config user.name "nudge-bot"
+            git config user.email "actions@users.noreply.github.com"
+            git add tracked.json
+            git commit -m "chore: update nudge state [skip ci]"
+            git push
+          else
+            echo "No state change."
+          fi
