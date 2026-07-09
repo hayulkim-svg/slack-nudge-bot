@@ -18,9 +18,13 @@ export function isExpired(item, now) {
   return item.expiresAt != null && now >= item.expiresAt;
 }
 
-export function formatNudge(emoji, missing) {
+export const DEFAULT_NUDGE_TEMPLATE =
+  'Still waiting on a reaction from {mentions} — please react to confirm.';
+
+// template may contain {mentions}; it is replaced with the joined <@ID> mentions.
+export function formatNudge(template, missing) {
   const mentions = missing.map((id) => `<@${id}>`).join(' ');
-  return `Still waiting on a :${emoji}: from ${mentions} — please react to confirm.`;
+  return template.replaceAll('{mentions}', mentions);
 }
 
 export function addHours(unixSeconds, hours) {

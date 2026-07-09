@@ -20,7 +20,7 @@ export async function runCheck(items, slack, now) {
       await slack.postThreadReply({
         channel: item.channel,
         threadTs: item.ts,
-        text: formatNudge(item.emoji, missing),
+        text: formatNudge(item.nudgeText, missing),
       });
       item.nextNudgeAt = addHours(now, item.repeatIntervalHours);
     } catch (err) {

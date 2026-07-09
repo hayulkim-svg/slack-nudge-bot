@@ -1,6 +1,6 @@
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
-import { addHours, computeExpiresAt } from './nudgeLogic.js';
+import { addHours, computeExpiresAt, DEFAULT_NUDGE_TEMPLATE } from './nudgeLogic.js';
 import { loadTracked, saveTracked } from './store.js';
 import { createWebClient, makeSlack } from './slackClient.js';
 
@@ -19,6 +19,7 @@ export async function runAnnounce({ config, slack, now }) {
     channel: config.channel,
     ts,
     emoji: config.emoji,
+    nudgeText: config.nudgeText ?? DEFAULT_NUDGE_TEMPLATE,
     expected,
     repeatIntervalHours: config.repeatIntervalHours,
     nextNudgeAt: addHours(now, config.initialDelayHours),

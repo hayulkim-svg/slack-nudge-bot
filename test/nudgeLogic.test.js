@@ -33,11 +33,15 @@ test('isExpired respects null expiresAt (never expires)', () => {
   assert.equal(isExpired({ expiresAt: 500 }, 499), false);
 });
 
-test('formatNudge lists mentions and the emoji, no decorative emoji', () => {
+test('formatNudge substitutes {mentions} in the template', () => {
   assert.equal(
-    formatNudge('white_check_mark', ['U2', 'U3']),
-    'Still waiting on a :white_check_mark: from <@U2> <@U3> — please react to confirm.',
+    formatNudge('Waiting on {mentions} to react :E:', ['U2', 'U3']),
+    'Waiting on <@U2> <@U3> to react :E:',
   );
+});
+
+test('formatNudge replaces every {mentions} occurrence', () => {
+  assert.equal(formatNudge('{mentions} — {mentions}', ['U1']), '<@U1> — <@U1>');
 });
 
 test('addHours adds whole seconds', () => {

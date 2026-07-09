@@ -18,6 +18,7 @@ function item(overrides = {}) {
     channel: 'C1',
     ts: '1.1',
     emoji: 'white_check_mark',
+    nudgeText: 'Please react: {mentions}',
     expected: ['U1', 'U2'],
     repeatIntervalHours: 24,
     nextNudgeAt: 100,
@@ -34,7 +35,7 @@ test('nudges stragglers in a thread reply and reschedules', async () => {
   assert.equal(result.status, 'active');
   assert.equal(result.nextNudgeAt, 200 + 24 * 3600);
   assert.deepEqual(posted, [
-    { channel: 'C1', threadTs: '1.1', text: 'Still waiting on a :white_check_mark: from <@U2> — please react to confirm.' },
+    { channel: 'C1', threadTs: '1.1', text: 'Please react: <@U2>' },
   ]);
 });
 

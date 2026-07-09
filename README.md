@@ -24,6 +24,9 @@ item expires.
 - `emoji` — reaction emoji name, no colons (e.g. `white_check_mark`).
 - `expected` — list of Slack user IDs (`U...`) and/or emails to resolve.
 - `text` — the announcement message.
+- `nudgeText` — the reminder message template. `{mentions}` is replaced with the
+  `<@ID>` mentions of everyone who has not reacted. Supports Slack markup and
+  newlines. Optional; a plain English default is used if omitted.
 - `initialDelayHours` — wait this long after posting before the first nudge.
 - `repeatIntervalHours` — spacing between repeat nudges.
 - `expiresAfterHours` — stop nudging after this long (`null` = never expire).

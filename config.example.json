@@ -3,6 +3,7 @@
   "emoji": "white_check_mark",
   "expected": ["U0AAA1111", "teammate@example.com"],
   "text": "Please react with :white_check_mark: to confirm you have read this.",
+  "nudgeText": "📣 *Reminder*\nStill waiting on {mentions} — react with :white_check_mark: to confirm.",
   "initialDelayHours": 24,
   "repeatIntervalHours": 24,
   "expiresAfterHours": 168
