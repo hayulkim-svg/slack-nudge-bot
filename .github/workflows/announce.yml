@@ -1,10 +1,14 @@
 name: nudge-announce
 
-# Manually-triggered: posts the announcement from config.json and seeds tracking.
-# Run this from the Actions tab when you want to start a new reminder campaign.
+# Posts an announcement from config.json and seeds tracking. Runs on a monthly
+# schedule per reminder, and can also be triggered manually from the Actions tab.
 # State (tracked.json) is committed back so the scheduled check takes over.
+# Note: 09:00 KST == 00:00 UTC (same day), so the crons below are in UTC.
 
 on:
+  schedule:
+    - cron: '0 0 3 * *' # expense-claim  — 09:00 KST on the 3rd of each month
+    - cron: '0 0 22 * *' # card-withdrawal — 09:00 KST on the 22nd of each month
   workflow_dispatch:
     inputs:
       reminder_id:
@@ -28,10 +32,25 @@ jobs:
         with:
           node-version: '22'
       - run: npm ci
+      - name: Resolve reminder id
+        env:
+          DISPATCH_ID: ${{ inputs.reminder_id }}
+          SCHEDULE: ${{ github.event.schedule }}
+        run: |
+          if [ -n "$DISPATCH_ID" ]; then
+            id="$DISPATCH_ID"
+          elif [ "$SCHEDULE" = "0 0 3 * *" ]; then
+            id="expense-claim"
+          elif [ "$SCHEDULE" = "0 0 22 * *" ]; then
+            id="card-withdrawal"
+          else
+            echo "Could not resolve a reminder id from event."; exit 1
+          fi
+          echo "Resolved reminder id: $id"
+          echo "REMINDER_ID=$id" >> "$GITHUB_ENV"
       - name: Run announce
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-          REMINDER_ID: ${{ inputs.reminder_id }}
         run: node src/announce.js
       - name: Commit updated state
         run: |

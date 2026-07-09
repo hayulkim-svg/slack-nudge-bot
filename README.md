@@ -59,7 +59,8 @@ Add to your crontab (`crontab -e`) to check every 15 minutes:
 Two workflows in `.github/workflows/` run the bot on GitHub's servers:
 
 - `nudge-check` — runs `check` on a schedule (every 30 min) and on demand.
-- `nudge-announce` — runs `announce` when you trigger it manually.
+- `nudge-announce` — posts a reminder on a monthly schedule (09:00 KST on the
+  3rd = `expense-claim`, on the 22nd = `card-withdrawal`) and on manual trigger.
 
 Both read `config.json`, use the `SLACK_BOT_TOKEN` **repository secret**, and
 commit the updated `tracked.json` back to the repo so state persists between runs.
