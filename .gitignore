@@ -1,0 +1,4 @@
+.env
+tracked.json
+node_modules/
+*.log
