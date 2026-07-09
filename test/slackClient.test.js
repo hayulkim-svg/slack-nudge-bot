@@ -22,6 +22,12 @@ function fakeWeb(calls, responses = {}) {
         return { user: { id: 'U777' } };
       },
     },
+    conversations: {
+      open: async (args) => {
+        calls.push(['conversations.open', args]);
+        return { channel: { id: 'D999' } };
+      },
+    },
   };
 }
 
@@ -66,4 +72,11 @@ test('postThreadReply sets thread_ts', async () => {
 test('lookupUserIdByEmail returns the user id', async () => {
   const slack = makeSlack(fakeWeb([]));
   assert.equal(await slack.lookupUserIdByEmail('a@b.com'), 'U777');
+});
+
+test('openDm opens a DM and returns the DM channel id', async () => {
+  const calls = [];
+  const slack = makeSlack(fakeWeb(calls));
+  assert.equal(await slack.openDm('U123'), 'D999');
+  assert.deepEqual(calls[0], ['conversations.open', { users: 'U123' }]);
 });

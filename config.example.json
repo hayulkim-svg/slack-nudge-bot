@@ -1,10 +1,14 @@
-{
-  "channel": "C0123ABCD",
-  "emoji": "white_check_mark",
-  "expected": ["U0AAA1111", "teammate@example.com"],
-  "text": "Please react with :white_check_mark: to confirm you have read this.",
-  "nudgeText": "📣 *Reminder*\nStill waiting on {mentions} — react with :white_check_mark: to confirm.",
-  "initialDelayHours": 24,
-  "repeatIntervalHours": 24,
-  "expiresAfterHours": 168
-}
+[
+  {
+    "id": "expense-claim",
+    "channel": "C0123ABCD",
+    "emoji": "white_check_mark",
+    "expected": ["U0AAA1111", "teammate@example.com"],
+    "text": "Please react with :white_check_mark: to confirm you have read this.",
+    "nudgeText": "📣 *Reminder*\nStill waiting on {mentions} — react with :white_check_mark: to confirm.",
+    "initialDelayHours": 2,
+    "repeatIntervalHours": 2,
+    "stopAtLocalTime": "23:00",
+    "timezone": "Asia/Seoul"
+  }
+]

@@ -6,7 +6,7 @@ import {
   isExpired,
   formatNudge,
   addHours,
-  computeExpiresAt,
+  stopTimeUnix,
 } from '../src/nudgeLogic.js';
 
 test('computeMissing returns expected users not in reactors, preserving order', () => {
@@ -48,7 +48,20 @@ test('addHours adds whole seconds', () => {
   assert.equal(addHours(1000, 2), 1000 + 7200);
 });
 
-test('computeExpiresAt returns null when hours is null', () => {
-  assert.equal(computeExpiresAt(1000, null), null);
-  assert.equal(computeExpiresAt(1000, 24), 1000 + 24 * 3600);
+test('stopTimeUnix resolves 23:00 KST on the local day of now', () => {
+  // now = 2026-07-10 00:00 UTC = 2026-07-10 09:00 KST
+  const now = Math.floor(Date.UTC(2026, 6, 10, 0, 0, 0) / 1000);
+  // 23:00 KST 2026-07-10 = 14:00 UTC 2026-07-10
+  assert.equal(stopTimeUnix(now, '23:00', 'Asia/Seoul'), Math.floor(Date.UTC(2026, 6, 10, 14, 0, 0) / 1000));
+});
+
+test('stopTimeUnix uses the local calendar day, not the UTC day', () => {
+  // now = 2026-07-10 22:00 UTC = 2026-07-11 07:00 KST -> local day is the 11th
+  const now = Math.floor(Date.UTC(2026, 6, 10, 22, 0, 0) / 1000);
+  assert.equal(stopTimeUnix(now, '23:00', 'Asia/Seoul'), Math.floor(Date.UTC(2026, 6, 11, 14, 0, 0) / 1000));
+});
+
+test('stopTimeUnix works for UTC', () => {
+  const now = Math.floor(Date.UTC(2026, 6, 10, 0, 0, 0) / 1000);
+  assert.equal(stopTimeUnix(now, '23:00', 'UTC'), Math.floor(Date.UTC(2026, 6, 10, 23, 0, 0) / 1000));
 });

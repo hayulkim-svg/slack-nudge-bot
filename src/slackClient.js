@@ -10,6 +10,10 @@ export function makeSlack(web) {
       const res = await web.chat.postMessage({ channel, text });
       return res.ts;
     },
+    async openDm(userId) {
+      const res = await web.conversations.open({ users: userId });
+      return res.channel.id;
+    },
     async getReactors({ channel, ts, emoji }) {
       const res = await web.reactions.get({ channel, timestamp: ts, full: true });
       const reactions = res.message?.reactions ?? [];

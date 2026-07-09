@@ -8,36 +8,42 @@ item expires.
 
 1. Create a Slack app at api.slack.com/apps ("From scratch").
 2. Under **OAuth & Permissions**, add bot token scopes:
-   `chat:write`, `reactions:read`, `users:read`, and `users:read.email`
-   (the last only needed if you list people by email).
+   `chat:write`, `reactions:read`, `im:write` (for DM-mode reminders), and
+   `users:read` + `users:read.email` (only if you list people by email).
 3. Install the app to your workspace and copy the **Bot User OAuth Token**
-   (`xoxb-...`).
+   (`xoxb-...`). If you add scopes later, **reinstall** the app.
 4. `cp .env.example .env` and paste the token into `.env`.
-5. Invite the bot to the target channel: `/invite @your-bot-name`.
+5. For channel-mode reminders, invite the bot: `/invite @your-bot-name`.
+   (DM-mode reminders need no invite.)
 6. Get the channel ID (channel details in Slack, or right-click the channel).
 
 ## Configure
 
-`cp config.example.json config.json` and edit:
+`config.json` is an **array of reminders**. `cp config.example.json config.json`
+and edit. Each reminder has:
 
-- `channel` — channel ID (starts with `C`).
-- `emoji` — reaction emoji name, no colons (e.g. `white_check_mark`).
-- `expected` — list of Slack user IDs (`U...`) and/or emails to resolve.
+- `id` — unique name; you post a reminder by this id (e.g. `card-withdrawal`).
+- `mode` — `"channel"` (post once in a channel, react there, nudge in-thread) or
+  `"dm"` (send each person a private DM they react on; nudges go to that DM).
+- `channel` — channel ID (starts with `C`). Required for `channel` mode; ignored
+  for `dm` mode.
+- `emoji` — reaction emoji name, no colons (e.g. `done`).
+- `expected` — Slack user IDs (`U...`) and/or emails to resolve.
 - `text` — the announcement message.
-- `nudgeText` — the reminder message template. `{mentions}` is replaced with the
-  `<@ID>` mentions of everyone who has not reacted. Supports Slack markup and
-  newlines. Optional; a plain English default is used if omitted.
-- `initialDelayHours` — wait this long after posting before the first nudge.
+- `nudgeText` — reminder template. `{mentions}` is replaced with the `<@ID>`
+  mentions of whoever has not reacted (omit it for personal DMs). Optional.
+- `initialDelayHours` — delay from posting to the first nudge.
 - `repeatIntervalHours` — spacing between repeat nudges.
-- `expiresAfterHours` — stop nudging after this long (`null` = never expire).
+- `stopAtLocalTime` + `timezone` — daily cutoff after which no more nudges are
+  sent, e.g. `"23:00"` in `"Asia/Seoul"`.
 
 ## Run
 
 ```bash
 npm install
-npm test            # run the test suite
-npm run announce    # post the announcement (reads config.json)
-npm run check       # nudge non-reactors that are due (run this on a schedule)
+npm test                          # run the test suite
+npm run announce -- <reminder-id> # post a reminder (e.g. card-withdrawal)
+npm run check                     # nudge due non-reactors (run on a schedule)
 ```
 
 ## Schedule the check (local, only while your computer is on)
@@ -65,7 +71,8 @@ Setup:
 2. Add the secret: repo **Settings → Secrets and variables → Actions → New
    repository secret**, name `SLACK_BOT_TOKEN`, value your `xoxb-...` token.
    (Or: `gh secret set SLACK_BOT_TOKEN`.)
-3. To start a reminder: **Actions → nudge-announce → Run workflow**.
+3. To start a reminder: **Actions → nudge-announce → Run workflow**, and enter
+   the reminder `id` (e.g. `card-withdrawal`).
 4. The scheduled `nudge-check` then nudges non-reactors automatically.
 
 Notes:

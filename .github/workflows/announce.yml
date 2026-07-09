@@ -5,7 +5,12 @@ name: nudge-announce
 # State (tracked.json) is committed back so the scheduled check takes over.
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      reminder_id:
+        description: 'Reminder id from config.json (e.g. expense-claim, card-withdrawal)'
+        required: true
+        type: string
 
 permissions:
   contents: write
@@ -26,6 +31,7 @@ jobs:
       - name: Run announce
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          REMINDER_ID: ${{ inputs.reminder_id }}
         run: node src/announce.js
       - name: Commit updated state
         run: |
