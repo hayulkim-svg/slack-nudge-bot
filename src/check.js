@@ -1,4 +1,5 @@
 import { join } from 'node:path';
+import { pathToFileURL } from 'node:url';
 import { computeMissing, isDue, isExpired, formatNudge, addHours } from './nudgeLogic.js';
 import { loadTracked, saveTracked } from './store.js';
 import { createWebClient, makeSlack } from './slackClient.js';
@@ -42,7 +43,7 @@ export async function main() {
   console.log(`check complete: ${items.length} tracked item(s)`);
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (import.meta.url === pathToFileURL(process.argv[1]).href) {
   main().catch((err) => {
     console.error(err.message);
     process.exit(1);

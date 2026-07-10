@@ -1,5 +1,6 @@
 import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
+import { pathToFileURL } from 'node:url';
 import { addHours, stopTimeUnix, DEFAULT_NUDGE_TEMPLATE } from './nudgeLogic.js';
 import { loadTracked, saveTracked } from './store.js';
 import { createWebClient, makeSlack } from './slackClient.js';
@@ -70,7 +71,7 @@ export async function main() {
   );
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (import.meta.url === pathToFileURL(process.argv[1]).href) {
   main().catch((err) => {
     console.error(err.message);
     process.exit(1);

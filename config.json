@@ -1,11 +1,24 @@
 [
   {
+    "id": "test-ax",
+    "mode": "channel",
+    "channel": "C0BGB6YNFK4",
+    "emoji": "white_check_mark",
+    "expected": ["U067F2L82RJ"],
+    "text": ":wave: *Test nudge* (nudge-bot-test-finance-ax)\nReact with :white_check_mark: to confirm you've seen this. If you don't, the bot will nudge you in this thread.",
+    "nudgeText": ":mega: *Test reminder*\nStill waiting on a reaction from {mentions} — react with :white_check_mark: on the message above to confirm.",
+    "initialDelayHours": 0,
+    "repeatIntervalHours": 0,
+    "stopAtLocalTime": "23:59",
+    "timezone": "Asia/Seoul"
+  },
+  {
     "id": "expense-claim",
     "mode": "channel",
     "channel": "C0BFVC9G7C7",
     "emoji": "done",
     "expected": ["U0B660ASYHG", "U067F2L82RJ"],
-    "text": ":wave: *경비청구 안내* (테스트)\n이번 달 경비청구 :money_with_wings::moneybag: 잊지 않으셨죠? 오늘까지 완료 부탁드립니다 :thankyou_brown:\n완료하신 분은 본 메시지에 :done: 이모지를 달아주세요!\n\n:alarm_clock: *23:00까지* 완료 부탁드립니다.",
+    "text": ":wave: 경비청구 안내 (베타 운영 중)\n이번 달 경비청구 :money_with_wings::moneybag: 잊지 않으셨죠? <https://app.notion.com/p/upstage/19ce45d000258020ac43c137e92d086d?source=copy_link#1a5e45d0002580c28955faafe942d916|경비청구시 작성 가이드> 내용 필독 후 준수하시어 오늘까지 완료 부탁드립니다 :thankyou_brown:\n완료하신 분은 본 메시지에 :done: 이모지를 달아주세요!",
     "nudgeText": ":mega: *경비청구 리마인드*\n아직 완료하지 않은 분들이 있습니다.\n{mentions}\n경비청구 완료 후 위 원본 메시지에 :done: 이모지를 달아주세요!",
     "initialDelayHours": 2,
     "repeatIntervalHours": 2,
