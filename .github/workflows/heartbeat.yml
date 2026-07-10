@@ -1,0 +1,36 @@
+name: nudge-heartbeat
+
+# Keeps the scheduled workflows alive. GitHub disables a repo's scheduled
+# workflows after ~60 days without repository activity, and the nudge jobs
+# often commit nothing on quiet days. This commits a heartbeat timestamp twice
+# a month (the 1st and 15th) so that timer never runs out.
+
+on:
+  schedule:
+    - cron: '0 0 1,15 * *' # 1st and 15th of each month, 00:00 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: nudge-state
+  cancel-in-progress: false
+
+jobs:
+  heartbeat:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update heartbeat
+        run: |
+          date -u +"%Y-%m-%dT%H:%M:%SZ" > .github/heartbeat.txt
+          git config user.name "nudge-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add .github/heartbeat.txt
+          if git diff --cached --quiet; then
+            echo "No change."
+          else
+            git commit -m "chore: heartbeat [skip ci]"
+            git push
+          fi

@@ -34,6 +34,16 @@ and edit. Each reminder has:
   mentions of whoever has not reacted (omit it for personal DMs). Optional.
 - `initialDelayHours` — delay from posting to the first nudge.
 - `repeatIntervalHours` — spacing between repeat nudges.
+- `schedule` — when the daily cloud job auto-announces this reminder (KST),
+  using the Korean working calendar (`src/koreanCalendar.js`). Omit for
+  manual-only reminders. Types:
+  - `{ "type": "nthWorkingDay", "n": 3 }` — the nth working day of the month
+    (weekends + KR public/substitute holidays + Labor Day skipped). Used by
+    `expense-claim`.
+  - `{ "type": "dayBeforeWorkingDayOnOrAfter", "day": 23 }` — withdrawal lands
+    on `day`, rolled forward to the next working day if needed; the message is
+    sent the calendar day before that (may be a weekend/holiday, by design).
+    Used by `card-withdrawal`.
 - `stopAtLocalTime` + `timezone` — daily cutoff after which no more nudges are
   sent, e.g. `"23:00"` in `"Asia/Seoul"`.
 
@@ -59,8 +69,10 @@ Add to your crontab (`crontab -e`) to check every 15 minutes:
 Two workflows in `.github/workflows/` run the bot on GitHub's servers:
 
 - `nudge-check` — runs `check` on a schedule (every 30 min) and on demand.
-- `nudge-announce` — posts a reminder on a monthly schedule (09:00 KST on the
-  3rd = `expense-claim`, on the 22nd = `card-withdrawal`) and on manual trigger.
+- `nudge-announce` — runs **daily at 09:00 KST** and announces whichever
+  reminders are due today per their `schedule` block (Korean working calendar).
+  A manual run with a `reminder_id` announces that reminder immediately,
+  bypassing the schedule.
 
 Both read `config.json`, use the `SLACK_BOT_TOKEN` **repository secret**, and
 commit the updated `tracked.json` back to the repo so state persists between runs.
@@ -72,8 +84,9 @@ Setup:
 2. Add the secret: repo **Settings → Secrets and variables → Actions → New
    repository secret**, name `SLACK_BOT_TOKEN`, value your `xoxb-...` token.
    (Or: `gh secret set SLACK_BOT_TOKEN`.)
-3. To start a reminder: **Actions → nudge-announce → Run workflow**, and enter
-   the reminder `id` (e.g. `card-withdrawal`).
+3. Leave it to run: `nudge-announce` fires each reminder on its scheduled day.
+   To start one manually, use **Actions → nudge-announce → Run workflow** and
+   enter the reminder `id` (e.g. `card-withdrawal`).
 4. The scheduled `nudge-check` then nudges non-reactors automatically.
 
 Notes:

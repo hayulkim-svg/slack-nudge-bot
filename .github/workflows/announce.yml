@@ -1,19 +1,21 @@
 name: nudge-announce
 
-# Posts an announcement from config.json and seeds tracking. Runs on a monthly
-# schedule per reminder, and can also be triggered manually from the Actions tab.
-# State (tracked.json) is committed back so the scheduled check takes over.
-# Note: 09:00 KST == 00:00 UTC (same day), so the crons below are in UTC.
+# Runs once a day at 00:00 UTC (09:00 KST) and announces any reminder whose
+# Korean-working-calendar schedule (config.json "schedule" block) makes it due
+# today — e.g. expense-claim on the 3rd working day, card-withdrawal the day
+# before the 23rd rolled to a working day. Does nothing on non-send days.
+# A manual run with a reminder_id announces that reminder immediately, bypassing
+# the schedule. State (tracked.json) is committed back so the scheduled check
+# takes over the nudging.
 
 on:
   schedule:
-    - cron: '0 0 3 * *' # expense-claim  — 09:00 KST on the 3rd of each month
-    - cron: '0 0 22 * *' # card-withdrawal — 09:00 KST on the 22nd of each month
+    - cron: '0 0 * * *' # daily 00:00 UTC == 09:00 KST
   workflow_dispatch:
     inputs:
       reminder_id:
-        description: 'Reminder id from config.json (e.g. expense-claim, card-withdrawal)'
-        required: true
+        description: 'Announce this reminder id now, bypassing the schedule (e.g. expense-claim)'
+        required: false
         type: string
 
 permissions:
@@ -32,26 +34,16 @@ jobs:
         with:
           node-version: '22'
       - run: npm ci
-      - name: Resolve reminder id
-        env:
-          DISPATCH_ID: ${{ inputs.reminder_id }}
-          SCHEDULE: ${{ github.event.schedule }}
-        run: |
-          if [ -n "$DISPATCH_ID" ]; then
-            id="$DISPATCH_ID"
-          elif [ "$SCHEDULE" = "0 0 3 * *" ]; then
-            id="expense-claim"
-          elif [ "$SCHEDULE" = "0 0 22 * *" ]; then
-            id="card-withdrawal"
-          else
-            echo "Could not resolve a reminder id from event."; exit 1
-          fi
-          echo "Resolved reminder id: $id"
-          echo "REMINDER_ID=$id" >> "$GITHUB_ENV"
-      - name: Run announce
+      - name: Announce due reminders
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-        run: node src/announce.js
+          DISPATCH_ID: ${{ inputs.reminder_id }}
+        run: |
+          if [ -n "$DISPATCH_ID" ]; then
+            node src/announce.js "$DISPATCH_ID"
+          else
+            node src/dailyAnnounce.js
+          fi
       - name: Commit updated state
         run: |
           if [ -n "$(git status --porcelain tracked.json)" ]; then
