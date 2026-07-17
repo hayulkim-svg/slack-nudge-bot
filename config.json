@@ -24,7 +24,8 @@
     "mode": "dm",
     "emoji": "done",
     "expected": [
-      "U0B660ASYHG"
+      "U0B660ASYHG",
+      "U067F2L82RJ"
     ],
     "schedule": {
       "type": "dayBeforeWorkingDayOnOrAfter",
