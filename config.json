@@ -4,8 +4,14 @@
     "mode": "channel",
     "channel": "C0BFVC9G7C7",
     "emoji": "done",
-    "expected": ["U0B660ASYHG", "U067F2L82RJ"],
-    "schedule": { "type": "nthWorkingDay", "n": 3 },
+    "expected": [
+      "U0B660ASYHG",
+      "U067F2L82RJ"
+    ],
+    "schedule": {
+      "type": "nthWorkingDay",
+      "n": 3
+    },
     "text": ":wave: 경비청구 안내 (베타 운영 중)\n이번 달 경비청구 :money_with_wings::moneybag: 잊지 않으셨죠? <https://app.notion.com/p/upstage/19ce45d000258020ac43c137e92d086d?source=copy_link#1a5e45d0002580c28955faafe942d916|경비청구시 작성 가이드> 내용 필독 후 준수하시어 오늘까지 완료 부탁드립니다 :thankyou_brown:\n완료하신 분은 본 메시지에 :done: 이모지를 달아주세요!",
     "nudgeText": ":mega: *경비청구 리마인드*\n아직 완료하지 않은 분들이 있습니다.\n{mentions}\n경비청구 완료 후 위 원본 메시지에 :done: 이모지를 달아주세요!",
     "initialDelayHours": 2,
@@ -17,13 +23,34 @@
     "id": "card-withdrawal",
     "mode": "dm",
     "emoji": "done",
-    "expected": ["U0B660ASYHG", "U067F2L82RJ"],
-    "schedule": { "type": "dayBeforeWorkingDayOnOrAfter", "day": 23 },
+    "expected": [
+      "U0B660ASYHG",
+      "U067F2L82RJ"
+    ],
+    "schedule": {
+      "type": "dayBeforeWorkingDayOnOrAfter",
+      "day": 23
+    },
     "text": ":bell: *대금 인출 확인 안내* (베타 운영 중)\n내일은 법인카드 대금 출금일입니다:money_with_wings: 법인카드 출금 계좌에 잔액이 충분히 들어있는지 꼭 확인해 주세요. 잔액이 부족하면 연체가 발생할 수 있습니다.\n연체가 발생 할 시 회사 신용도에 문제가 생길 수 있으니, 연체가 발생하지 않도록 꼭 확인해주시기를 바랍니다:pray:\n\n확인을 완료하셨다면 *이 DM 메시지에 :done: 이모지*를 달아 응답해 주세요!\n\n:alarm_clock: 23:00까지 확인 부탁드립니다.",
     "nudgeText": ":mega: *대금 인출 확인 리마인드*\n아직 확인이 완료되지 않았습니다. 법인카드 출금 계좌 잔액을 확인하신 후 위 원본 메시지에 :done: 이모지를 달아 응답해 주세요!",
     "initialDelayHours": 2,
     "repeatIntervalHours": 2,
     "stopAtLocalTime": "23:00",
+    "timezone": "Asia/Seoul"
+  },
+  {
+    "id": "test-channel",
+    "mode": "channel",
+    "channel": "C0BGDNYKPPV",
+    "emoji": "done",
+    "expected": [
+      "U067F2L82RJ"
+    ],
+    "text": ":wave: *넛지봇 채널 테스트* (test-channel)\n이 메시지는 봇 동작 확인용 테스트입니다.\n확인하셨다면 본 메시지에 :done: 이모지를 달아주세요!\n반응이 없으면 스레드로 리마인드가 전송됩니다.",
+    "nudgeText": ":mega: *테스트 리마인드*\n아직 확인하지 않은 분들이 있습니다.\n{mentions}\n위 원본 메시지에 :done: 이모지를 달아주세요!",
+    "initialDelayHours": 0,
+    "repeatIntervalHours": 0.25,
+    "stopAtLocalTime": "23:59",
     "timezone": "Asia/Seoul"
   }
 ]
