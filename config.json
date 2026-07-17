@@ -64,8 +64,8 @@
     ],
     "text": ":wave: 경비청구 안내 (베타 운영 중)\n이번 달 경비청구 :money_with_wings::moneybag: 잊지 않으셨죠? <https://app.notion.com/p/upstage/19ce45d000258020ac43c137e92d086d?source=copy_link#1a5e45d0002580c28955faafe942d916|경비청구시 작성 가이드> 내용 필독 후 준수하시어 오늘까지 완료 부탁드립니다 :thankyou_brown:\n완료하신 분은 본 메시지에 :done: 이모지를 달아주세요!",
     "nudgeText": ":mega: *경비청구 리마인드*\n아직 완료하지 않은 분들이 있습니다.\n{mentions}\n경비청구 완료 후 위 원본 메시지에 :done: 이모지를 달아주세요!",
-    "initialDelayHours": 2,
-    "repeatIntervalHours": 2,
+    "initialDelayHours": 0,
+    "repeatIntervalHours": 0.0167,
     "stopAtLocalTime": "23:00",
     "timezone": "Asia/Seoul"
   }
