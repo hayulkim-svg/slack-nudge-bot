@@ -1,1 +1,15 @@
-[]
+[
+  {
+    "channel": "C0BGDNYKPPV",
+    "ts": "1784300826.341349",
+    "expected": [
+      "U067F2L82RJ"
+    ],
+    "emoji": "done",
+    "nudgeText": ":mega: *테스트 리마인드*\n아직 확인하지 않은 분들이 있습니다.\n{mentions}\n위 원본 메시지에 :done: 이모지를 달아주세요!",
+    "repeatIntervalHours": 0.25,
+    "nextNudgeAt": 1784300825,
+    "expiresAt": 1784386740,
+    "status": "active"
+  }
+]
