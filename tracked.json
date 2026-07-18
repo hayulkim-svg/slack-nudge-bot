@@ -15,5 +15,22 @@
     "nextNudgeAt": 1784437615,
     "expiresAt": 1784383200,
     "status": "active"
+  },
+  {
+    "channel": "C0BHX1P8ZT5",
+    "ts": "1784351780.044929",
+    "expected": [
+      "U067F2L82RJ",
+      "U07448UM90B",
+      "U0811MG7H1C",
+      "U08AZAMBC6B",
+      "U08Q08AM0RZ"
+    ],
+    "emoji": "done",
+    "nudgeText": ":mega: *경비청구 리마인드*\n아직 완료하지 않은 분들이 있습니다.\n{mentions}\n경비청구 완료 후 위 원본 메시지에 :done: 이모지를 달아주세요!",
+    "repeatIntervalHours": 24,
+    "nextNudgeAt": 1784351839,
+    "expiresAt": 1784383200,
+    "status": "active"
   }
 ]
