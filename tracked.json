@@ -12,7 +12,7 @@
     "emoji": "done",
     "nudgeText": ":mega: *경비청구 리마인드*\n아직 완료하지 않은 분들이 있습니다.\n{mentions}\n경비청구 완료 후 위 원본 메시지에 :done: 이모지를 달아주세요!",
     "repeatIntervalHours": 24,
-    "nextNudgeAt": 1784351167,
+    "nextNudgeAt": 1784437615,
     "expiresAt": 1784383200,
     "status": "active"
   }
