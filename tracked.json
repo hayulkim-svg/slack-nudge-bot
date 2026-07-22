@@ -404,7 +404,7 @@
     "repeatIntervalHours": 2,
     "nextNudgeAt": 1784720037,
     "expiresAt": 1784728800,
-    "status": "active"
+    "status": "expired"
   },
   {
     "channel": "D0BG7MTH7FF",
@@ -417,6 +417,6 @@
     "repeatIntervalHours": 2,
     "nextNudgeAt": 1784720037,
     "expiresAt": 1784728800,
-    "status": "active"
+    "status": "expired"
   }
 ]
