@@ -1,8 +1,9 @@
 import { WebClient } from '@slack/web-api';
 
 // Schedules (or immediately posts) the card-withdrawal notice as bot DMs to a
-// roster of employees given by Korean name. Reports matching results and
-// outcomes via DM to REPORT_USER instead of logs (public repo — no PII in logs).
+// roster of employees given by Korean name (or raw Slack user id). Reports
+// matching results and outcomes via DM to REPORT_USER instead of logs
+// (public repo — no PII in logs).
 const token = process.env.SLACK_BOT_TOKEN;
 if (!token) throw new Error('SLACK_BOT_TOKEN is not set');
 const names = (process.env.ROSTER || '').split(',').map((s) => s.trim()).filter(Boolean);
@@ -17,7 +18,6 @@ const TEXT_MORNING = ':bell: *대금 인출 확인 안내*\n오늘은 법인카�
 
 const web = new WebClient(token);
 
-// Build Korean-name -> user id index from the workspace directory.
 const byKorean = new Map();
 let cursor;
 do {
@@ -39,6 +39,7 @@ const matched = [];
 const unmatched = [];
 const ambiguous = [];
 for (const name of names) {
+  if (/^U[A-Z0-9]{6,}$/.test(name)) { matched.push({ name, id: name }); continue; }
   const set = byKorean.get(name);
   if (!set || set.size === 0) unmatched.push(name);
   else if (set.size > 1) ambiguous.push(name);
