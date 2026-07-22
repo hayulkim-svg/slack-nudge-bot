@@ -1,0 +1,42 @@
+name: schedule-announce
+
+# Sends/schedules the company-wide card-withdrawal notice as bot DMs.
+# Roster comes from the ROSTER repository secret (comma-separated Korean
+# names) so no PII lands in the public repo or its logs.
+
+on:
+  workflow_dispatch:
+    inputs:
+      post_at_1:
+        description: "First send: 'now' or unix epoch seconds (empty = skip)"
+        required: false
+        type: string
+      post_at_2:
+        description: "Second send: unix epoch seconds (empty = skip)"
+        required: false
+        type: string
+      dry_run:
+        description: "Set 1 to only test name matching (reports via DM)"
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  schedule:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci
+      - name: Schedule announcements
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          ROSTER: ${{ secrets.ROSTER }}
+          POST_AT_1: ${{ inputs.post_at_1 }}
+          POST_AT_2: ${{ inputs.post_at_2 }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: node src/scheduleAnnounce.js
