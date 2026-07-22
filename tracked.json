@@ -158,5 +158,239 @@
     "nextNudgeAt": 1784774617,
     "expiresAt": 1784728800,
     "status": "active"
+  },
+  {
+    "channel": "D0BJVPHUBF0",
+    "ts": "1784688456.380709",
+    "expected": [
+      "U01QPQ11PQD"
+    ],
+    "emoji": "done",
+    "nudgeText": ":mega: *대금 인출 확인 리마인드*\n아직 확인이 완료되지 않았습니다. 법인카드 출금 계좌 잔액을 확인하신 후 위 원본 메시지에 :done: 이모지를 달아 응답해 주세요!",
+    "repeatIntervalHours": 24,
+    "nextNudgeAt": 1784774855,
+    "expiresAt": 1784728800,
+    "status": "active"
+  },
+  {
+    "channel": "D0BJXP73JJE",
+    "ts": "1784688456.756499",
+    "expected": [
+      "U01T0GY0WAY"
+    ],
+    "emoji": "done",
+    "nudgeText": ":mega: *대금 인출 확인 리마인드*\n아직 확인이 완료되지 않았습니다. 법인카드 출금 계좌 잔액을 확인하신 후 위 원본 메시지에 :done: 이모지를 달아 응답해 주세요!",
+    "repeatIntervalHours": 24,
+    "nextNudgeAt": 1784774855,
+    "expiresAt": 1784728800,
+    "status": "active"
+  },
+  {
+    "channel": "D0BJUES78CV",
+    "ts": "1784688457.139139",
+    "expected": [
+      "U02BYNSR459"
+    ],
+    "emoji": "done",
+    "nudgeText": ":mega: *대금 인출 확인 리마인드*\n아직 확인이 완료되지 않았습니다. 법인카드 출금 계좌 잔액을 확인하신 후 위 원본 메시지에 :done: 이모지를 달아 응답해 주세요!",
+    "repeatIntervalHours": 24,
+    "nextNudgeAt": 1784774855,
+    "expiresAt": 1784728800,
+    "status": "active"
+  },
+  {
+    "channel": "D0BJVPH1B2A",
+    "ts": "1784688457.509389",
+    "expected": [
+      "U031T8HKU2F"
+    ],
+    "emoji": "done",
+    "nudgeText": ":mega: *대금 인출 확인 리마인드*\n아직 확인이 완료되지 않았습니다. 법인카드 출금 계좌 잔액을 확인하신 후 위 원본 메시지에 :done: 이모지를 달아 응답해 주세요!",
+    "repeatIntervalHours": 24,
+    "nextNudgeAt": 1784774855,
+    "expiresAt": 1784728800,
+    "status": "active"
+  },
+  {
+    "channel": "D0BJVPH213Q",
+    "ts": "1784688458.013929",
+    "expected": [
+      "U038J429JTA"
+    ],
+    "emoji": "done",
+    "nudgeText": ":mega: *대금 인출 확인 리마인드*\n아직 확인이 완료되지 않았습니다. 법인카드 출금 계좌 잔액을 확인하신 후 위 원본 메시지에 :done: 이모지를 달아 응답해 주세요!",
+    "repeatIntervalHours": 24,
+    "nextNudgeAt": 1784774855,
+    "expiresAt": 1784728800,
+    "status": "active"
+  },
+  {
+    "channel": "D0BJXP7GFR8",
+    "ts": "1784688458.439949",
+    "expected": [
+      "U059RS4M5PY"
+    ],
+    "emoji": "done",
+    "nudgeText": ":mega: *대금 인출 확인 리마인드*\n아직 확인이 완료되지 않았습니다. 법인카드 출금 계좌 잔액을 확인하신 후 위 원본 메시지에 :done: 이모지를 달아 응답해 주세요!",
+    "repeatIntervalHours": 24,
+    "nextNudgeAt": 1784774855,
+    "expiresAt": 1784728800,
+    "status": "active"
+  },
+  {
+    "channel": "D0BG7MTH7FF",
+    "ts": "1784688458.791509",
+    "expected": [
+      "U067F2L82RJ"
+    ],
+    "emoji": "done",
+    "nudgeText": ":mega: *대금 인출 확인 리마인드*\n아직 확인이 완료되지 않았습니다. 법인카드 출금 계좌 잔액을 확인하신 후 위 원본 메시지에 :done: 이모지를 달아 응답해 주세요!",
+    "repeatIntervalHours": 24,
+    "nextNudgeAt": 1784774855,
+    "expiresAt": 1784728800,
+    "status": "active"
+  },
+  {
+    "channel": "D0BK1EQS6R2",
+    "ts": "1784688459.140359",
+    "expected": [
+      "U06FNCVLURF"
+    ],
+    "emoji": "done",
+    "nudgeText": ":mega: *대금 인출 확인 리마인드*\n아직 확인이 완료되지 않았습니다. 법인카드 출금 계좌 잔액을 확인하신 후 위 원본 메시지에 :done: 이모지를 달아 응답해 주세요!",
+    "repeatIntervalHours": 24,
+    "nextNudgeAt": 1784774855,
+    "expiresAt": 1784728800,
+    "status": "active"
+  },
+  {
+    "channel": "D0BJ57TFF62",
+    "ts": "1784688459.417209",
+    "expected": [
+      "U07448UM90B"
+    ],
+    "emoji": "done",
+    "nudgeText": ":mega: *대금 인출 확인 리마인드*\n아직 확인이 완료되지 않았습니다. 법인카드 출금 계좌 잔액을 확인하신 후 위 원본 메시지에 :done: 이모지를 달아 응답해 주세요!",
+    "repeatIntervalHours": 24,
+    "nextNudgeAt": 1784774855,
+    "expiresAt": 1784728800,
+    "status": "active"
+  },
+  {
+    "channel": "D0BJ10BHVV1",
+    "ts": "1784688459.705939",
+    "expected": [
+      "U0811MG7H1C"
+    ],
+    "emoji": "done",
+    "nudgeText": ":mega: *대금 인출 확인 리마인드*\n아직 확인이 완료되지 않았습니다. 법인카드 출금 계좌 잔액을 확인하신 후 위 원본 메시지에 :done: 이모지를 달아 응답해 주세요!",
+    "repeatIntervalHours": 24,
+    "nextNudgeAt": 1784774855,
+    "expiresAt": 1784728800,
+    "status": "active"
+  },
+  {
+    "channel": "D0BJVPEMMU6",
+    "ts": "1784688460.081979",
+    "expected": [
+      "U083UGHM32L"
+    ],
+    "emoji": "done",
+    "nudgeText": ":mega: *대금 인출 확인 리마인드*\n아직 확인이 완료되지 않았습니다. 법인카드 출금 계좌 잔액을 확인하신 후 위 원본 메시지에 :done: 이모지를 달아 응답해 주세요!",
+    "repeatIntervalHours": 24,
+    "nextNudgeAt": 1784774855,
+    "expiresAt": 1784728800,
+    "status": "active"
+  },
+  {
+    "channel": "D0BJ3UHJCS1",
+    "ts": "1784688460.435889",
+    "expected": [
+      "U08AZAMBC6B"
+    ],
+    "emoji": "done",
+    "nudgeText": ":mega: *대금 인출 확인 리마인드*\n아직 확인이 완료되지 않았습니다. 법인카드 출금 계좌 잔액을 확인하신 후 위 원본 메시지에 :done: 이모지를 달아 응답해 주세요!",
+    "repeatIntervalHours": 24,
+    "nextNudgeAt": 1784774855,
+    "expiresAt": 1784728800,
+    "status": "active"
+  },
+  {
+    "channel": "D0BJ0B4PPPV",
+    "ts": "1784688460.707999",
+    "expected": [
+      "U08Q08AM0RZ"
+    ],
+    "emoji": "done",
+    "nudgeText": ":mega: *대금 인출 확인 리마인드*\n아직 확인이 완료되지 않았습니다. 법인카드 출금 계좌 잔액을 확인하신 후 위 원본 메시지에 :done: 이모지를 달아 응답해 주세요!",
+    "repeatIntervalHours": 24,
+    "nextNudgeAt": 1784774855,
+    "expiresAt": 1784728800,
+    "status": "active"
+  },
+  {
+    "channel": "D0BJUEPHMM3",
+    "ts": "1784688461.090259",
+    "expected": [
+      "U09H526KNU8"
+    ],
+    "emoji": "done",
+    "nudgeText": ":mega: *대금 인출 확인 리마인드*\n아직 확인이 완료되지 않았습니다. 법인카드 출금 계좌 잔액을 확인하신 후 위 원본 메시지에 :done: 이모지를 달아 응답해 주세요!",
+    "repeatIntervalHours": 24,
+    "nextNudgeAt": 1784774855,
+    "expiresAt": 1784728800,
+    "status": "active"
+  },
+  {
+    "channel": "D0BJVPJ7U2J",
+    "ts": "1784688461.472879",
+    "expected": [
+      "U0AHNECPGTH"
+    ],
+    "emoji": "done",
+    "nudgeText": ":mega: *대금 인출 확인 리마인드*\n아직 확인이 완료되지 않았습니다. 법인카드 출금 계좌 잔액을 확인하신 후 위 원본 메시지에 :done: 이모지를 달아 응답해 주세요!",
+    "repeatIntervalHours": 24,
+    "nextNudgeAt": 1784774855,
+    "expiresAt": 1784728800,
+    "status": "active"
+  },
+  {
+    "channel": "D0BJZLWMZC1",
+    "ts": "1784688461.847349",
+    "expected": [
+      "U0ATKNQ0WSE"
+    ],
+    "emoji": "done",
+    "nudgeText": ":mega: *대금 인출 확인 리마인드*\n아직 확인이 완료되지 않았습니다. 법인카드 출금 계좌 잔액을 확인하신 후 위 원본 메시지에 :done: 이모지를 달아 응답해 주세요!",
+    "repeatIntervalHours": 24,
+    "nextNudgeAt": 1784774855,
+    "expiresAt": 1784728800,
+    "status": "active"
+  },
+  {
+    "channel": "D0BJUERPNMT",
+    "ts": "1784688462.198379",
+    "expected": [
+      "U0B78T7GRJA"
+    ],
+    "emoji": "done",
+    "nudgeText": ":mega: *대금 인출 확인 리마인드*\n아직 확인이 완료되지 않았습니다. 법인카드 출금 계좌 잔액을 확인하신 후 위 원본 메시지에 :done: 이모지를 달아 응답해 주세요!",
+    "repeatIntervalHours": 24,
+    "nextNudgeAt": 1784774855,
+    "expiresAt": 1784728800,
+    "status": "active"
+  },
+  {
+    "channel": "D0BKS3HAY9E",
+    "ts": "1784688462.644199",
+    "expected": [
+      "U0B92Q92FG8"
+    ],
+    "emoji": "done",
+    "nudgeText": ":mega: *대금 인출 확인 리마인드*\n아직 확인이 완료되지 않았습니다. 법인카드 출금 계좌 잔액을 확인하신 후 위 원본 메시지에 :done: 이모지를 달아 응답해 주세요!",
+    "repeatIntervalHours": 24,
+    "nextNudgeAt": 1784774855,
+    "expiresAt": 1784728800,
+    "status": "active"
   }
 ]
