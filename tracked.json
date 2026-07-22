@@ -128,5 +128,35 @@
     "nextNudgeAt": 1784441385,
     "expiresAt": 1784383200,
     "status": "expired"
+  },
+  {
+    "channel": "C06G4TK160M",
+    "ts": "1784687781.054979",
+    "expected": [
+      "U01QPQ11PQD",
+      "U01T0GY0WAY",
+      "U02BYNSR459",
+      "U031T8HKU2F",
+      "U038J429JTA",
+      "U059RS4M5PY",
+      "U067F2L82RJ",
+      "U06FNCVLURF",
+      "U07448UM90B",
+      "U0811MG7H1C",
+      "U083UGHM32L",
+      "U08AZAMBC6B",
+      "U08Q08AM0RZ",
+      "U09H526KNU8",
+      "U0AHNECPGTH",
+      "U0ATKNQ0WSE",
+      "U0B78T7GRJA",
+      "U0B92Q92FG8"
+    ],
+    "emoji": "done",
+    "nudgeText": ":mega: *경비청구 리마인드*\n아직 완료하지 않은 분들이 있습니다.\n{mentions}\n경비청구 완료 후 위 원본 메시지에 :done: 이모지를 달아주세요!",
+    "repeatIntervalHours": 24,
+    "nextNudgeAt": 1784688080,
+    "expiresAt": 1784728800,
+    "status": "active"
   }
 ]
