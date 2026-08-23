@@ -428,7 +428,7 @@
     "emoji": "done",
     "nudgeText": ":mega: *대금 인출 확인 리마인드*\n아직 확인이 완료되지 않았습니다. 법인카드 출금 계좌 잔액을 확인하신 후 위 원본 메시지에 :done: 이모지를 달아 응답해 주세요!",
     "repeatIntervalHours": 2,
-    "nextNudgeAt": 1787456720,
+    "nextNudgeAt": 1787465381,
     "expiresAt": 1787493600,
     "status": "active"
   },
@@ -443,6 +443,6 @@
     "repeatIntervalHours": 2,
     "nextNudgeAt": 1787456720,
     "expiresAt": 1787493600,
-    "status": "active"
+    "status": "done"
   }
 ]
